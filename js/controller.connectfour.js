@@ -44,4 +44,38 @@
 //TODO: Create your controller-object. When initiated, it should boot
 //      the view (or views, if you decide to make a console-view).
 
-//TODO: Add EventListeners, to forward the user inputs to the model.
+const connectFourController = {
+    init: function () {
+        connectFourView.init();
+        connectFourModel.init();
+
+        this.addBoardClick();
+        this.addRestartButton();
+    },
+
+    //TODO: Add EventListeners, to forward the user inputs to the model.
+    addBoardClick: function () {
+        const board = document.querySelector("#board");
+
+        board.addEventListener("click", function (event) {
+            if (!event.target.classList.contains("cell")) {
+                return;
+            }
+
+            const col = Number(event.target.dataset.column);
+            connectFourModel.insertStone(col);
+        });
+    },
+
+    addRestartButton: function () {
+        const restartButton = document.querySelector("#restartButton");
+
+        restartButton.addEventListener("click", function () {
+            connectFourModel.init();
+        });
+    }
+};
+
+window.addEventListener("load", function () {
+    connectFourController.init();
+});
