@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.game-box {
+    border: 2px solid black;
+    padding: 18px;
+    text-align: center;
+    background: white;
+}
+
+h1 {
+    margin: 0 0 4px 0;
+    font-size: 30px;
+}
+
+.story {
+    margin: 0 0 14px 0;
+    font-size: 14px;
+}
+
+#playerInfo,
+#message {
+    margin: 8px 0;
+    min-height: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(7, 55px);
+    grid-template-rows: repeat(6, 55px);
+    gap: 6px;
+    border: 2px solid black;
+    padding: 8px;
+    background: white;
+}
+
+.cell {
+    width: 55px;
+    height: 55px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: #eeeeee;
+}
+
+/* player 1 stones */
+.player-one {
+    background: red;
+}
+
+/* player 2 stones */
+.player-two {
+    background: yellow;
+    border-width: 4px;
+}
+
+.winning-cell {
+    outline: 4px solid black;
+    outline-offset: -4px;
+}
+
+.fighter {
+    width: 170px;
+    height: 260px;
+    border: 2px solid black;
+    background-image: url("dbz-duel.png");
+    background-repeat: no-repeat;
+    background-size: 700px auto;
+    position: relative;
+    overflow: hidden;
+
+    /* inactive player is grey */
+    filter: grayscale(100%);
+    opacity: 0.45;
+}
+
+/* left side is player 1 */
+.left-fighter {
+    background-position: -430px -40px;
+}
+
+/* right side is player 2 */
+.right-fighter {
+    background-position: -30px -45px;
+}
+
+/* only the player with the current turn is colored */
+.active-fighter {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.fighter p,
+.fighter span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+    background: white;
+    color: black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.fighter p {
+    bottom: 28px;
+    font-weight: bold;
+    padding: 4px;
+}
+
+.fighter span {
+    bottom: 0;
+    font-size: 13px;
+    padding: 4px;
+}
+
+button {
+    margin-top: 14px;
+    padding: 8px 16px;
+    background: white;
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
+@media (max-width: 760px) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .game-wrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .fighter {
+        width: 260px;
+        height: 150px;
+        background-size: 560px auto;
+    }
+
+    .left-fighter {
+        background-position: -330px -35px;
+    }
+
+    .right-fighter {
+        background-position: -15px -35px;
+    }
+
+    #board {
+        grid-template-columns: repeat(7, 42px);
+        grid-template-rows: repeat(6, 42px);
+    }
+
+    .cell {
+        width: 42px;
+        height: 42px;
+    }
+}
