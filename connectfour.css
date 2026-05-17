@@ -5,184 +5,309 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
-    background: white;
-    color: black;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    #0d1326,
+                    #182848,
+                    #2c5364
+            );
+
+    color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 20px;
 }
 
 .game-wrapper {
     display: flex;
-    gap: 28px;
+    gap: 30px;
     align-items: center;
 }
 
 .game-box {
-    border: 2px solid black;
-    padding: 18px;
+    border: 3px solid orange;
+
+    padding: 20px;
+
     text-align: center;
-    background: white;
+
+    background:
+            rgba(0,0,0,0.75);
+
+    border-radius: 15px;
+
+    box-shadow:
+            0 0 20px rgba(255,165,0,0.5);
 }
 
 h1 {
-    margin: 0 0 4px 0;
-    font-size: 30px;
+    margin: 0 0 8px;
+
+    font-size: 34px;
+
+    color: gold;
+
+    text-shadow:
+            0 0 10px orange;
 }
 
 .story {
-    margin: 0 0 14px 0;
-    font-size: 14px;
+    margin-bottom: 16px;
+
+    color: #dddddd;
 }
 
 #playerInfo,
 #message {
     margin: 8px 0;
-    min-height: 20px;
+
+    min-height: 22px;
+
+    font-weight: bold;
 }
+
+/* BOARD */
 
 #board {
     display: grid;
-    grid-template-columns: repeat(7, 55px);
-    grid-template-rows: repeat(6, 55px);
+
+    grid-template-columns: repeat(7, 60px);
+    grid-template-rows: repeat(6, 60px);
+
     gap: 6px;
-    border: 2px solid black;
-    padding: 8px;
-    background: white;
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    #004aad,
+                    #001d4a
+            );
+
+    border: 3px solid gold;
 }
 
 .cell {
-    width: 55px;
-    height: 55px;
-    border: 2px solid black;
+    width: 60px;
+    height: 60px;
+
     border-radius: 50%;
+
+    border: 2px solid black;
+
     background: white;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .cell:hover {
-    background: #eeeeee;
+    transform: scale(1.08);
+
+    background: #dddddd;
 }
 
-/* player 1 stones */
+/* GOKU PIECES */
+
 .player-one {
-    background: red;
+    background:
+            radial-gradient(
+                    circle,
+                    gold,
+                    orange
+            );
+
+    box-shadow:
+            0 0 12px gold;
 }
 
-/* player 2 stones */
+/* PICCOLO PIECES */
+
 .player-two {
-    background: yellow;
-    border-width: 4px;
+    background:
+            radial-gradient(
+                    circle,
+                    #8aff4d,
+                    green
+            );
+
+    box-shadow:
+            0 0 12px lime;
 }
 
 .winning-cell {
-    outline: 4px solid black;
+    outline: 4px solid white;
+
     outline-offset: -4px;
+
+    animation:
+            pulse 0.8s infinite;
 }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* CHARACTER PANELS */
 
 .fighter {
-    width: 170px;
-    height: 260px;
-    border: 2px solid black;
-    background-image: url("dbz-duel.png");
-    background-repeat: no-repeat;
-    background-size: 700px auto;
-    position: relative;
+    width: 220px;
+    height: 340px;
+
+    border: 3px solid gold;
+
+    border-radius: 15px;
+
     overflow: hidden;
 
-    /* inactive player is grey */
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
     filter: grayscale(100%);
+
     opacity: 0.45;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+            0 0 15px rgba(0,0,0,0.7);
 }
 
-/* left side is player 1 */
+/* PLAYER 1 */
+
 .left-fighter {
-    background-position: -430px -40px;
+    background-image: url("songoku.jpg");
 }
 
-/* right side is player 2 */
+/* PLAYER 2 */
+
 .right-fighter {
-    background-position: -30px -45px;
+    background-image: url("picolo.jpeg");
 }
 
-/* only the player with the current turn is colored */
+/* ACTIVE PLAYER */
+
 .active-fighter {
     filter: grayscale(0%);
+
     opacity: 1;
+
+    transform: scale(1.05);
+
+    box-shadow:
+            0 0 20px gold,
+            0 0 40px orange;
 }
+
+/* LABELS */
 
 .fighter p,
 .fighter span {
     position: absolute;
+
     left: 0;
     right: 0;
+
     margin: 0;
+
     text-align: center;
-    background: white;
-    color: black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+
+    background:
+            rgba(0,0,0,0.75);
+
+    color: white;
 }
 
 .fighter p {
-    bottom: 28px;
+    bottom: 30px;
+
+    padding: 8px;
+
     font-weight: bold;
-    padding: 4px;
+
+    font-size: 18px;
 }
 
 .fighter span {
     bottom: 0;
-    font-size: 13px;
-    padding: 4px;
+
+    padding: 8px;
+
+    font-size: 14px;
 }
 
+/* BUTTON */
+
 button {
-    margin-top: 14px;
-    padding: 8px 16px;
-    background: white;
+    margin-top: 16px;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: orange;
+
     color: black;
-    border: 2px solid black;
+
+    font-weight: bold;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 button:hover {
-    background: black;
-    color: white;
+    transform: scale(1.05);
+
+    background: gold;
 }
 
-@media (max-width: 760px) {
-    body {
-        align-items: flex-start;
-        padding-top: 20px;
-    }
+/* MOBILE */
+
+@media (max-width: 900px) {
 
     .game-wrapper {
         flex-direction: column;
-        gap: 12px;
     }
 
     .fighter {
         width: 260px;
-        height: 150px;
-        background-size: 560px auto;
-    }
-
-    .left-fighter {
-        background-position: -330px -35px;
-    }
-
-    .right-fighter {
-        background-position: -15px -35px;
+        height: 220px;
     }
 
     #board {
-        grid-template-columns: repeat(7, 42px);
-        grid-template-rows: repeat(6, 42px);
+        grid-template-columns: repeat(7, 45px);
+        grid-template-rows: repeat(6, 45px);
     }
 
     .cell {
-        width: 42px;
-        height: 42px;
+        width: 45px;
+        height: 45px;
     }
 }
