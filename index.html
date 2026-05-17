@@ -2,10 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Connect Four</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="connectfour.css">
 </head>
 <body>
-    <!--TODO: Build the Markup for your Game. Don't forget to style it in a cascading stylesheet. -->
+<!--TODO: Build the Markup for your Game. Don't forget to style it in a cascading stylesheet. -->
 
+<main class="game-wrapper">
+    <aside class="fighter left-fighter active-fighter">
+        <p>Son Goku</p>
+        <span>Player 1</span>
+    </aside>
+
+    <section class="game-box">
+        <h1>Connect 4</h1>
+        <p class="story">Dragon Ball Z Version</p>
+
+        <p id="playerInfo">Current player: Son Goku</p>
+        <p id="message">Click into a column.</p>
+
+        <div id="board"></div>
+
+        <button id="restartButton">Restart</button>
+    </section>
+
+    <aside class="fighter right-fighter">
+        <p>Piccolo</p>
+        <span>Player 2</span>
+    </aside>
+</main>
+
+<script src="js/model.connectfour.js"></script>
+<script src="js/view.polished.js"></script>
+<script src="js/controller.connectfour.js"></script>
 </body>
 </html>
